@@ -1,21 +1,49 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { VideoGrid } from "@/components/video-grid"
+import { Header } from "@/components/header"
+import { HeroSection } from "@/components/hero-section"
+import { FeaturesSection } from "@/components/features-section"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <div className="flex flex-col w-1/2">
-          <h1 className="text-4xl font-bold">Hello, I'm <span className="text-blue-500">John Doe</span></h1>
-          <p className="text-gray
-          -500">I'm a software engineer based in New York City. I specialize in building exceptional digital experiences.</p>
-          <button className="bg-blue-500 text-white px-4 py-2 mt-4">Get in touch</button>
-        </div>
-        <div className="flex flex-col w-1/2">
-          <Image src="/profile.jpg" alt="John Doe" width={300} height={300} />
-        </div>
-      </div>
-    </main>
-
-  );
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <FeaturesSection />
+        <section className="container mx-auto py-12 px-4 md:py-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Trending Videos</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Discover what's popular right now on BilalTube</p>
+          </div>
+          <VideoGrid />
+          <div className="text-center mt-10">
+            <Button asChild size="lg">
+              <Link href="/videos">Browse All Videos</Link>
+            </Button>
+          </div>
+        </section>
+        <section className="bg-muted py-16 md:py-24">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight mb-6">Ready to share your content?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+              Join thousands of creators who are sharing their videos with the world.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" variant="default">
+                <Link href="/signup">Create Account</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/upload">Upload Video</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
 }
+
